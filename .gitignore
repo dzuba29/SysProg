@@ -56,3 +56,5 @@ lab03/file-write
 *.txt
 
 lab03/file-read
+
+lab03/pipe

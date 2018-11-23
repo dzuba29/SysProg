@@ -5,7 +5,7 @@
 int main(){
     int fd;
     size_t size;
-    char buffer[15]; //block to read = 14
+    char buffer[15]; //block to read = 14+1
     char filename[] = "myfile.txt";
 
     if((fd = open(filename,O_RDONLY)) < 0)
