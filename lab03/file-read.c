@@ -5,29 +5,24 @@
 int main(){
     int fd;
     size_t size;
-    char string[] = "Hello, world!\n";
+    char buffer[15]; //block to read = 14
     char filename[] = "myfile.txt";
 
-    (void)umask(0);
-
-    if((fd = open(filename, O_WRONLY | O_CREAT,0666)) < 0)
+    if((fd = open(filename,O_RDONLY)) < 0)
     {
         printf("Can\'t open file\n");
         exit(-1);
     }
-
-    size = write(fd, string, 14);
-
-    if(size != 14)
+    while((size = read(fd,buffer,14))>0)
     {
-        printf("Can\'t write all string\n");
-        exit(-1);
+        buffer[size]=0;
+        fputs(buffer,stdout);
     }
 
     if(close(fd) < 0)
     {
         printf("Can\'t close file\n");
     }
-    close(fd);
-    return 0;
+
+	return 0;
 } 
