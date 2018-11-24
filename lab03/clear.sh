@@ -1,0 +1,2 @@
+rm *.fifo
+rm *.pipe
